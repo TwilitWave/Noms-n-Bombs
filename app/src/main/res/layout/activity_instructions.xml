@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.wavefaring.noms_n_bombs.game"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/instructions1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wander around the map!"
+        android:textSize="25sp"
+        android:layout_marginTop="100dp"
+        />
+
+    <TextView
+        android:id="@+id/instructions2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick up blue + for points!"
+        android:textSize="25sp"
+        android:layout_marginTop="100dp"
+        android:textColor="#0080FF"
+        />
+
+    <TextView
+        android:id="@+id/instructions3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Avoid SKULL items or else!"
+        android:textSize="25sp"
+        android:layout_marginTop="100dp"
+        android:textColor="#990000"
+        />
+
+    <Button
+        android:id="@+id/mainMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Main Menu"
+        android:textAllCaps="false"
+        android:onClick="mainMenu"
+        />
+
+</LinearLayout>
