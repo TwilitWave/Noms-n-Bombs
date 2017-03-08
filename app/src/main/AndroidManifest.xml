@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".game">
+        <activity android:name=".menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".over" />
+        <activity android:name=".game" />
         <activity android:name=".instructions" />
-        <activity android:name=".menu"></activity>
+        <activity android:name=".over"></activity>
     </application>
 
 </manifest>
