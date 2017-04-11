@@ -30,6 +30,16 @@
         android:id="@+id/instructions3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Collect 100 points to win!"
+        android:textSize="25sp"
+        android:layout_marginTop="100dp"
+        android:textColor="#0080FF"
+        />
+
+    <TextView
+        android:id="@+id/instructions4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Avoid SKULL items or else!"
         android:textSize="25sp"
         android:layout_marginTop="100dp"

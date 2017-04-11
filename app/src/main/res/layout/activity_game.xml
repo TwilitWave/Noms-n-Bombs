@@ -10,7 +10,7 @@
         android:id="@+id/score"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="Score : "
+        android:text="Score: "
         android:textSize="20sp"
         android:paddingStart="20dp"
         android:gravity="center_vertical"
@@ -44,13 +44,23 @@
             />
 
         <Button
-            android:id="@+id/placeholder"
+            android:id="@+id/placeholderEnd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PLACEHOLDER"
+            android:text="Placeholder End Game"
             android:textAllCaps="false"
-            android:onClick="placeholder"
+            android:onClick="placeholderEnd"
             android:layout_marginTop="50dp"
+            />
+
+        <Button
+            android:id="@+id/placeholderScoreIncrement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Placeholder Score Increment"
+            android:textAllCaps="false"
+            android:onClick="placeholderScoreIncrement"
+            android:layout_marginTop="100dp"
             />
 
     </FrameLayout>
