@@ -22,18 +22,11 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/character"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/character"
-            android:layout_gravity="center"
-            />
-
-        <ImageView
             android:id="@+id/noms"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/noms"
+            android:layout_gravity="center"
             />
 
         <ImageView
@@ -41,26 +34,15 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:src="@drawable/bombs"
+            android:layout_gravity="bottom"
             />
 
-        <Button
-            android:id="@+id/placeholderEnd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Placeholder End Game"
-            android:textAllCaps="false"
-            android:onClick="placeholderEnd"
-            android:layout_marginTop="50dp"
-            />
-
-        <Button
-            android:id="@+id/placeholderScoreIncrement"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Placeholder Score Increment"
-            android:textAllCaps="false"
-            android:onClick="placeholderScoreIncrement"
-            android:layout_marginTop="100dp"
+        <ImageView
+            android:id="@+id/character"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/character"
+            android:layout_gravity="right"
             />
 
     </FrameLayout>
