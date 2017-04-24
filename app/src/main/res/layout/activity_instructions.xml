@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Wander around the map!"
         android:textSize="25sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:text="Pick up blue + for points!"
         android:textSize="25sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="75dp"
         android:textColor="#0080FF"
         />
 
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="Collect 100 points to win!"
         android:textSize="25sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="75dp"
         android:textColor="#0080FF"
         />
 
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:text="Avoid SKULL items or else!"
         android:textSize="25sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="75dp"
         android:textColor="#990000"
         />
 

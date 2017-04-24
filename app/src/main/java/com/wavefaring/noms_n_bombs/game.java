@@ -3,6 +3,7 @@ package com.wavefaring.noms_n_bombs;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,11 +12,14 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class game extends AppCompatActivity {
 
+    MediaPlayer pickupNoms;
+    MediaPlayer pickupBombs;
     private TextView score;
     private int currentScore = 0;
     private ImageView character;
@@ -27,6 +31,7 @@ public class game extends AppCompatActivity {
     private int nomsY;
     private int bombsX;
     private int bombsY;
+    private int speed = 0;
     private int windowWidth;
     private int windowHeight;
     private Handler handler = new Handler();
@@ -62,12 +67,16 @@ public class game extends AppCompatActivity {
                 );
             }
         }, 0, 15);
+
+        // Instantiates the playable sounds
+        pickupNoms = MediaPlayer.create(this, R.raw.pickupnom);
+        pickupBombs = MediaPlayer.create(this, R.raw.pickupbomb);
     }
 
     // Follow the users finger/stylus/mouse around with the character
     public boolean onTouchEvent(MotionEvent movement) {
-        characterX = (int)movement.getX()-135;
-        characterY = (int)movement.getY()-365;
+        characterX = (int)movement.getX()-175;
+        characterY = (int)movement.getY()-460;
         character.setX(characterX);
         character.setY(characterY);
 
@@ -76,7 +85,7 @@ public class game extends AppCompatActivity {
 
     public void reposition() {
         // Randomly selects a spawn location for the noms and sends it flying up from the bottom of the screen
-        nomsY -=10;
+        nomsY -= speed + 5;
         if(nomsY < 0) {
             nomsY = windowHeight;
             nomsX = (int)Math.floor(Math.random() * (windowWidth - noms.getWidth()));
@@ -85,7 +94,7 @@ public class game extends AppCompatActivity {
         noms.setY(nomsY);
 
         // Randomly selects a spawn location for the bombs and sends it flying up from the bottom of the screen
-        bombsY -=20;
+        bombsY -= speed + 10;
         if(bombsY < 0) {
             bombsY = windowHeight;
             bombsX = (int)Math.floor(Math.random() * (windowWidth - bombs.getWidth()));
@@ -103,30 +112,49 @@ public class game extends AppCompatActivity {
 
         // Hitbox for character image
         character.getLocationInWindow(location);
-        Rect characterRectangle = new Rect(location[0], location[1], location[0] + character.getWidth(), location[1] + character.getHeight());
+        Rect characterRectangle = new Rect(location[0], location[1], location[0] + character.getWidth() - 50, location[1] + character.getHeight() - 50);
 
         // Hitbox for noms image
         noms.getLocationInWindow(location);
-        Rect nomsRectangle = new Rect(location[0], location[1], location[0] + noms.getWidth(), location[1] + noms.getHeight());
+        Rect nomsRectangle = new Rect(location[0], location[1], location[0] + noms.getWidth() - 25, location[1] + noms.getHeight() - 25);
 
         // Hitbox for bombs image
         bombs.getLocationInWindow(location);
-        Rect bombsRectangle = new Rect(location[0], location[1], location[0] + bombs.getWidth(), location[1] + bombs.getHeight());
+        Rect bombsRectangle = new Rect(location[0], location[1], location[0] + bombs.getWidth() - 35, location[1] + bombs.getHeight() -35);
 
-        // Increments the score by 5 when the character hits a nom
+        // Increments the score by 5 when the character hits a nom and speeds up both the noms and bombs
         if (Rect.intersects(characterRectangle, nomsRectangle)) {
             // Moves the nom off the screen
             nomsY = -200;
 
+            // Play pickup sound
+            if (pickupNoms.isPlaying()) {
+                pickupNoms.stop();
+                pickupNoms.release();
+                pickupNoms = MediaPlayer.create(this, R.raw.pickupnom);
+            }
+            pickupNoms.start();
+
             currentScore += 5;
             // Set editable text to desired values
             score.setText("Score: " + currentScore);
+
+            // Ups the speed by 1
+            speed += 1;
         }
 
         // Ends the game and displays the results screen when the character hits a bomb
         if (Rect.intersects(characterRectangle, bombsRectangle)) {
             // Moves the bomb off the screen
             bombsY = -200;
+
+            // Play death sound
+            if (pickupBombs.isPlaying()) {
+                pickupBombs.stop();
+                pickupBombs.release();
+                pickupBombs = MediaPlayer.create(this, R.raw.pickupbomb);
+            }
+            pickupBombs.start();
 
             // Stops the timer so that it doesn't continue running in the background
             timer.cancel();
